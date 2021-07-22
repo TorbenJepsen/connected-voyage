@@ -13,7 +13,7 @@ module.exports = merge(common, {
 		hot: true,
 		port: 8080,
 		proxy: {
-			"/api": {
+			"/": {
 				changeOrigin: true,
 				target: "http://svc.metrotransit.org/NexTrip/",
 			}
