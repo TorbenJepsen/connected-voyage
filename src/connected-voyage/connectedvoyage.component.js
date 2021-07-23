@@ -4,6 +4,7 @@ import { RouteDirectionComponent } from '../route-direction/route-direction.comp
 import { RouteStopsComponent } from '../route-stops/route-stops.component'
 import { fetchTransitRoutesAction } from '../transit-routes/transit-routes.actions'
 import { TransitRoutesComponent } from '../transit-routes/transit-routes.component'
+import { VoyageListComponent } from '../voyage-list/voyage-list.component'
 
 export const ConnectedVoyageComponent = () => {
     const headline = "Departures"
@@ -19,6 +20,7 @@ export const ConnectedVoyageComponent = () => {
             <TransitRoutesComponent />
             <RouteDirectionComponent />
             <RouteStopsComponent />
+            <VoyageListComponent />
         </div>
     )
 }
