@@ -1,16 +1,16 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getRouteDirectionAction } from '../route-direction/route-direction.actions'
-import { setRouteNumberAction } from './transit-routes.actions'
 import { transitRoutesSelector } from './transit-routes.selectors'
+import { push } from "connected-react-router"
 
 export const TransitRoutesComponent = () => {
     const dispatch = useDispatch()
     const routes = useSelector(state => transitRoutesSelector(state))
+    
+    const addRouteNumberToPathAction = routeNumber => push(`/${routeNumber}`)
 
     const setRouteAndGetDirection = routeNumber => {
-        dispatch(getRouteDirectionAction(routeNumber))
-        dispatch(setRouteNumberAction(routeNumber))
+        dispatch(addRouteNumberToPathAction(routeNumber))
     }
 
     const handleRouteChange = event => setRouteAndGetDirection(event.target.value)

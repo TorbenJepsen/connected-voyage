@@ -3,8 +3,8 @@ import {
 	map,
 	mergeMap,
 } from "rxjs/operators"
-import { ROUTE_STOPS_FETCH, ROUTE_STOP_ID_FETCH } from "./route-stops.types"
-import { setRouteStopIdAction, setRouteStopsAction } from "./route-stops.actions"
+import { ROUTE_STOPS_FETCH } from "./route-stops.types"
+import { setRouteStopsAction } from "./route-stops.actions"
 
 export const fetchRouteStopsEpic = (action$, state$, { getJSON }) =>
 	action$.pipe(

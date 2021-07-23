@@ -1,18 +1,25 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router'
 import { getRouteStopsAction } from '../route-stops/route-stops.actions'
-import { routeNumberSelector } from '../transit-routes/transit-routes.selectors'
-import { setSelectedDirectionAction } from './route-direction.actions'
+import { getRouteDirectionAction } from './route-direction.actions'
 import { routeDirectionSelector } from './route-direction.selectors'
+import { push } from "connected-react-router"
 
 export const RouteDirectionComponent = () => {
     const dispatch = useDispatch()
     const directions = useSelector(state => routeDirectionSelector(state))
-    const routeNumber = useSelector(state => routeNumberSelector(state))
+    const { routeNumber } = useParams()
+
+    useEffect(() => {
+        dispatch(getRouteDirectionAction(routeNumber))
+    }, [routeNumber])
+
+    const addSelectedDirectionToPathAction = direction => push(`/${routeNumber}/${direction}`)
 
     const handleRouteDirectionChange = event => {
         dispatch(getRouteStopsAction(event.target.value, routeNumber))
-        dispatch(setSelectedDirectionAction(event.target.value))
+        dispatch(addSelectedDirectionToPathAction(event.target.value))
     }
 
     const directionOptions = directions ? directions.map(direction => {

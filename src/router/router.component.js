@@ -1,17 +1,29 @@
 import React from "react"
 import {
-	Route,
-	Switch,
+	Route
 } from "react-router"
 import { ConnectedVoyageComponent } from "../connected-voyage/connectedvoyage.component"
+import { RouteDirectionComponent } from "../route-direction/route-direction.component"
+import { RouteStopsComponent } from "../route-stops/route-stops.component"
+import { VoyageListComponent } from "../voyage-list/voyage-list.component"
 
 export const RouterComponent = () => (
-	<Switch>
+	<>
 		<Route
-			exact
 			path={ "/" }
 			component={ ConnectedVoyageComponent }
 		/>
-		<Route render={ () => (<div>Oops, something went wrong! :(</div>) } />
-	</Switch>
+		<Route 
+			path={"/:routeNumber"}
+			component={ RouteDirectionComponent }
+		/>
+		<Route 
+			path={"/:routeNumber/:selectedDirection"}
+			component={ RouteStopsComponent }
+		/>
+		<Route 
+			path={"/:routeNumber/:selectedDirection/:stopCode"}
+			component={ VoyageListComponent }
+		/>
+	</>
 )

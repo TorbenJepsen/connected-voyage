@@ -1,30 +1,48 @@
-import React, { Fragment } from 'react'
-import { useSelector } from 'react-redux'
-import { voyageListSelector } from './voyage-list.selectors'
+import React, { Fragment, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router'
+import { fetchVoyageDeparturesAction } from './voyage-list.actions'
+import { voyageDeparturesSelector, voyageStopDescriptionSelector, voyageStopIdSelector } from './voyage-list.selectors'
 
 export const VoyageListComponent = () => {
-    const voyages = useSelector(state => voyageListSelector(state))
+    const { routeNumber, selectedDirection, stopCode } = useParams()
+    const dispatch = useDispatch()
+    const departures = useSelector(state => voyageDeparturesSelector(state))
+    const stopDescription = useSelector(state => voyageStopDescriptionSelector(state))
+    const stopId = useSelector(state => voyageStopIdSelector(state))
+
+    useEffect(() => {
+        dispatch(fetchVoyageDeparturesAction(routeNumber, selectedDirection, stopCode))
+    }, [stopCode, routeNumber])
+
 
     return (
-        voyages ? (
-        <Fragment>
-            <table className="voyage-list">
-                <tr>
-                    <th>Route</th>
-                    <th>Destination</th>
-                    <th>Departs</th>
-                </tr>
-            {voyages.map(voyage => {
-                return (
-                    <tr>
-                        <td>{voyage.route_short_name}</td>
-                        <td>{voyage.description}</td>
-                        <td>{voyage.departure_text}</td>
-                    </tr>
-                )
-            })}
-            </table>
-        </Fragment>
-        ): null
+        departures ? (
+            <Fragment>
+                <span>
+                    <h3>{stopDescription} Stop #:{stopId}</h3>
+                </span>
+                <table className="voyage-list">
+                    <thead>
+                        <tr>
+                            <th>Route</th>
+                            <th>Destination</th>
+                            <th>Departs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {departures.map(departure => {
+                            return (
+                                <tr key={departure.trip_id}>
+                                    <td>{departure.route_short_name}</td>
+                                    <td>{departure.description}</td>
+                                    <td>{departure.departure_text}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </Fragment>
+        ) : null
     )
 }
