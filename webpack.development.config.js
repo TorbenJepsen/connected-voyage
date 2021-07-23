@@ -15,7 +15,7 @@ module.exports = merge(common, {
 		proxy: {
 			"/": {
 				changeOrigin: true,
-				target: "http://svc.metrotransit.org/NexTrip/",
+				target: "http://svc.metrotransit.org/NexTripv2/",
 			}
 		}
 	},
