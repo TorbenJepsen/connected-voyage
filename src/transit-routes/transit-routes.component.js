@@ -1,14 +1,12 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { addRouteNumberToPathAction } from './transit-routes.actions'
 import { transitRoutesSelector } from './transit-routes.selectors'
-import { push } from "connected-react-router"
 
 export const TransitRoutesComponent = () => {
     const dispatch = useDispatch()
     const routes = useSelector(state => transitRoutesSelector(state))
     
-    const addRouteNumberToPathAction = routeNumber => push(`/${routeNumber}`)
-
     const setRouteAndGetDirection = routeNumber => {
         dispatch(addRouteNumberToPathAction(routeNumber))
     }
@@ -24,11 +22,13 @@ export const TransitRoutesComponent = () => {
     })
 
     return (
-        <div>
+        routes ? (
+        <Fragment>
             <select className="route-selector" onChange={handleRouteChange}>
                 <option>Select Route</option>
                 {routeOptions}
             </select>
-        </div>
+        </Fragment>
+        ) : null
     )
 }

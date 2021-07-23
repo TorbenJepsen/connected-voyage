@@ -1,18 +1,20 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import { fetchVoyageDeparturesAction } from '../voyage-list/voyage-list.actions'
 import { routeStopsSelector } from './route-stops.selectors'
-import { push } from "connected-react-router"
+import { addSelectedStopCodeToPathAction, getRouteStopsAction } from './route-stops.actions'
 
 export const RouteStopsComponent = () => {
     const dispatch = useDispatch()
     const routeStops = useSelector(state => routeStopsSelector(state))
     const { routeNumber, selectedDirection } = useParams()
 
-    const addSelectedStopCodeToPathAction = stopCode => push(`/${routeNumber}/${selectedDirection}/${stopCode}`)
+    useEffect(() => {
+        dispatch(getRouteStopsAction(selectedDirection, routeNumber))
+    }, [selectedDirection])
+
     const handleRouteStopChange = event => {
-        dispatch(addSelectedStopCodeToPathAction(event.target.value))
+        dispatch(addSelectedStopCodeToPathAction(routeNumber, selectedDirection, event.target.value))
     }
 
     const stopOptions = routeStops ? routeStops.map(stop => {
