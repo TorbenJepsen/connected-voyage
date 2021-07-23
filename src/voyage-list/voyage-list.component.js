@@ -22,7 +22,7 @@ export const VoyageListComponent = () => {
                 <span>
                     <h3>{stopDescription} Stop #:{stopId}</h3>
                 </span>
-                <table className="voyage-list">
+                <table className="voyage-list" data-cy={"voyage-list"}>
                     <thead>
                         <tr>
                             <th>Route</th>

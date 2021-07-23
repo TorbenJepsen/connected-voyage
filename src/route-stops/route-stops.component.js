@@ -28,7 +28,11 @@ export const RouteStopsComponent = () => {
     return (
         routeStops ? (
             <Fragment>
-            <select className="route-stop-selector" onChange={handleRouteStopChange}>
+            <select
+                className="route-stop-selector"
+                data-cy={ "stop-selector" }
+                onChange={handleRouteStopChange}
+            >
                 <option>Select Stop</option>
                 {stopOptions}
             </select>

@@ -28,7 +28,11 @@ export const RouteDirectionComponent = () => {
     return (
         directions ? (
             <Fragment>
-            <select className="route-direction-selector" onChange={handleRouteDirectionChange}>
+            <select
+                className="route-direction-selector"
+                data-cy={ "direction-selector" }
+                onChange={handleRouteDirectionChange}
+            >
                 <option>Select Direction</option>
                 {directionOptions}
             </select>

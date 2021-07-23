@@ -24,7 +24,11 @@ export const TransitRoutesComponent = () => {
     return (
         routes ? (
         <Fragment>
-            <select className="route-selector" onChange={handleRouteChange}>
+            <select
+                className="route-selector"
+                data-cy={ "route-selector" }
+                onChange={handleRouteChange}
+            >
                 <option>Select Route</option>
                 {routeOptions}
             </select>
