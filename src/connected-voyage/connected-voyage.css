@@ -17,6 +17,8 @@
     margin-top: 2rem;
     justify-content: space-between;
     font-family: 'Roboto';
+    background-color: lightgray;
+    padding: 0 1rem 0;
 }
 
 .stop-id-header {
