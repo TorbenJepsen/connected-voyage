@@ -35,7 +35,7 @@ export const VoyageListComponent = () => {
             }
         )
     }) : undefined
-    console.log(rows)
+
     return (
         departures ? (
             <Fragment>

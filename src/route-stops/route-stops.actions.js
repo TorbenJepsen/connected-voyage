@@ -11,7 +11,6 @@ export const setRouteStopsAction = stops => {
 }
 
 export const getRouteStopsAction = (direction, routeNumber) => {
-    console.log(direction, routeNumber)
     return ({
     type: ROUTE_STOPS_FETCH,
     payload: { direction, routeNumber }

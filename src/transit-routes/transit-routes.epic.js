@@ -1,7 +1,3 @@
-import {
-	forkJoin,
-	of,
-} from "rxjs"
 import { ofType } from "redux-observable"
 import {
 	map,

@@ -27,7 +27,7 @@ Launches cypress and allows interaction and viewing of automated tests.<br />
 
 ## Lay of the Land
 Directory Structure:
-- `src/` contains the all client side facing aspects of application
+- `src/` contains all client side facing aspects of application
 - `cypress/` contains automated functional test files
 
 ## Technology
