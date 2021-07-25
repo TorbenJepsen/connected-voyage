@@ -5,7 +5,6 @@ import { TransitRoutesComponent } from '../transit-routes/transit-routes.compone
 import './connected-voyage.css'
 
 export const ConnectedVoyageComponent = () => {
-    const headline = "Departures"
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -13,8 +12,11 @@ export const ConnectedVoyageComponent = () => {
     }, [])
 
     return (
-        <div className="app-container">
-            {headline}
+        <div className="header-container">
+            <img src="https://www.metrotransit.org/img/MetroTransitLogo.svg" className="metro-transit-logo" alt="metro-transit-logo" />
+            <div>
+                <img src="https://www.metrotransit.org/img/nextrip.jpg" className="metro-transit-banner" alt="metro-transit-banner" />
+            </div>
             <TransitRoutesComponent />
         </div>
     )

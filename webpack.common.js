@@ -15,7 +15,8 @@ module.exports = {
 			filename: "index.html",
 			id: packageJson.name,
 			template: "./src/index.html",
-			title: "Connected Voyage"
+			title: "Connected Voyage",
+			favicon: "./src/favicon.ico"
 		}),
 	],
 	module: {

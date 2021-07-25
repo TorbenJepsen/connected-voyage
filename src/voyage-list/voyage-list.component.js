@@ -39,8 +39,8 @@ export const VoyageListComponent = () => {
     return (
         departures ? (
             <Fragment>
-                <span>
-                    <h3>{stopDescription} Stop #:{stopId}</h3>
+                <span className="stop-name-header">
+                    <h2>{stopDescription}</h2> <h2 className="stop-id-header">Stop #:{stopId}</h2>
                 </span>
                 <TableContainer component={Paper} data-cy={"voyage-list"}>
                     <Table className={classes.table} aria-label="customized table">

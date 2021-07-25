@@ -2,3 +2,23 @@
     display: flex;
     justify-content: center;
 }
+
+.metro-transit-logo {
+    margin: 1rem 0 1rem
+}
+
+.metro-transit-banner {
+    width: 100%;
+    min-width: 320px;
+}
+
+.stop-name-header {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+    font-family: 'Roboto';
+}
+
+.stop-id-header {
+    margin-left: 2rem;
+}
