@@ -15,19 +15,19 @@ Given(/^user loads page$/, () => (
 When(/^the user selects route$/, () => (
 	cy
         .getRouteSelector()
-		.select('901')
+		.type('{enter}')
 ))
 
 When(/^the user selects direction$/, () => (
 	cy
         .getDirectionSelector()
-		.select('0')
+		.type('{enter}')
 ))
 
 When(/^the user selects a stop$/, () => (
 	cy
         .getStopSelector()
-		.select('MAAM')
+		.type('{enter}')
 ))
 
 Then(/^the url should contain (.*)$/, path => (
